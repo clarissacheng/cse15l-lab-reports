@@ -1,5 +1,5 @@
 # cd Command Line
-1. ![CSE15Lab1pic1](CSE15Lab1pic1.png)
+1. ![CSE15Lab1pic1](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/9ea08a38-4a61-48c0-8837-eaa352750bd6)
 
    When the command was run, there was no working directory and since there was no argument passed, we didn't go to any directory either. Since I didn't pass any argument with the command, there was no output because I didn't go to any specific directory. When there are no arguments, there is no directory for the cd command line so there is no change of directory and therefore no output. There is no error in having no output because we are not in a director nor are we changing to any specific directory since there is no directory argument.
 
