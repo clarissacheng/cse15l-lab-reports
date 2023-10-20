@@ -1,7 +1,7 @@
 # cd Command Line
 1. ![CSE15Lab1pic1](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/9ea08a38-4a61-48c0-8837-eaa352750bd6)
 
-   When the command was run, there was no working directory and since there was no argument passed, we didn't go to any directory either. Since I didn't pass any argument with the command, there was no output because I didn't go to any specific directory. When there are no arguments, there is no directory for the cd command line so there is no change of directory and therefore no output. There is no error in having no output because we are not in a director nor are we changing to any specific directory since there is no directory argument.
+   When the command was run, we are only in the working directory which is initially the terminal's desktop, and since there was no argument passed, we only changed to the home directory which is the directory we're currently in. No matter where we are in the system, using the cd command line without any arguments brings us back to the home directory. Since I didn't pass any argument with the command, the only output was the home directory. There is no error because we are only in the working directory nor are we changing to any specific directory since there is no directory argument.
 
 2. ![CSE15Lab1pic2](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/7035bce5-fd34-4ea5-bdb4-19151acb724a)
 
@@ -14,7 +14,7 @@
 # ls Command Line
 ![CSE15Lab1pic4](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/78121ea0-c0a7-424c-9848-03a151373b07)
 
-1. In the first line where I use the ls command with no arguments, the output was lecture1 which shows the current file in the working directory. lecture1 was the only current output because it was the only folder in the working directory. The output is not an error because ls command shows the names of the files and folders inside the current working directory.
+1. In the first line where I use the ls command with no arguments, the output was lecture1 which shows the current file in the working directory, or the terminal's desktop. lecture1 was the only current output because it was the only folder in the working directory. The output is not an error because ls command shows the names of the files and folders inside the current working directory.
 2. In the third line where I use the ls command with a path to a directory, the working directory is now lecture1 and the output displayed are the folders, classes, and README within the lecture1 directory. This output is not an error.
 3. In the fifth line where I use the ls command with a path to a file, there is an error because the ls command only shows the names of files and folders. The command line cannot access the file itself because that is not the purpose of the ls command.
 
