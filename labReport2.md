@@ -19,7 +19,7 @@ My first request is `/add-message?s=Hello`. The value of the `count` integer fie
 # Part 2
 
 Path to the private key for SSH key                    
-![CSE15Lab2pic5](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/fe91e785-df72-4bfa-8c6d-423e0f8d5406)
+![CSE15Lab2pic9](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/6ab02c3d-e6f5-466f-9879-8c80a12632bd)
 
 Path to the public key for SSH key                      
 ![CSE15Lab2pic8](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/4cfc439f-e8c0-4d2e-ad3d-0cd1dceadd65)
