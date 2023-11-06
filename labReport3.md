@@ -3,6 +3,7 @@
 The bug I chose is the reversed method from the ArrayExamples.java file. 
 
 * A failure-inducing input for the buggy program
+  
 ```
 @Test
   public void testReversed2() {
@@ -10,7 +11,9 @@ The bug I chose is the reversed method from the ArrayExamples.java file.
     assertArrayEquals(new int[]{4,3,2,1}, ArrayExamples.reversed(input1)); //array first differed at element [0]; expected <4> but was <0>
   }
 ```
+
 * An input that doesn’t induce a failure
+
 ```
 @Test
   public void testReversed2() {
@@ -18,7 +21,9 @@ The bug I chose is the reversed method from the ArrayExamples.java file.
     assertArrayEquals(new int[]{}, ArrayExamples.reversed(input1)); //no input so no error as nothing is incorrectly reversed
   }
 ```
+
 * The symptom for the failure-inducing input
+  
 ```
 JUnit version 4.13.2
 ....E
@@ -45,7 +50,9 @@ Caused by: java.lang.AssertionError: expected:<4> but was:<0>
 FAILURES!!!
 Tests run: 4,  Failures: 1
 ```
+
 * The symptom for the input that doesn’t induce a failure
+
 ```
 JUnit version 4.13.2
 ....
@@ -53,7 +60,9 @@ Time: 0.01
 
 OK (4 tests)
 ```
+
 * Bug before
+  
 ```
   // Returns a *new* array with all the elements of the input array in reversed order
   static int[] reversed(int[] arr) {
@@ -64,7 +73,9 @@ OK (4 tests)
     return arr;
   }
 ```
+
 * Bug fixed
+  
 ```
   // Returns a *new* array with all the elements of the input array in reversed order
   static int[] reversed(int[] arr) {
@@ -75,12 +86,14 @@ OK (4 tests)
     return newArray;
   }
 ```
+
 * The original `reversed` method incorrectly reverses the input array because it assigns uninitialized `newArray` to the  `arr` array which results in incorrect output.
 To fix this, I switch `arr` for  `newArray` and input this array with the reversed values from input array `arr`. This ensures the `newArray` contains the reversed values and that the reversed array is returned.
 
 # Part 2 - Researching Commands
 
 ## 1. grep -i
+
 ```
 grep -i "activities" ./technical/911report/chapter-13.1.txt
                     locations to coordinate the activities of other agencies when action may be
@@ -91,7 +104,9 @@ grep -i "activities" ./technical/911report/chapter-13.1.txt
                 Congress have the broad knowledge of intelligence activities or the know-how about
                     activities of the intelligence agencies and report problems relating to the
 ```
+
 * This command line searches for the pattern "activities" in the `chapter-13.1.txt` file and ignores any capitalizations of "activities". Source: https://en.wikibooks.org/wiki/Grep
+  
 ```
 grep -i "breathe" ./technical/*/*.txt
 ./technical/911report/chapter-1.txt:    At 8:19, Ong reported:"The cockpit is not answering, somebody's stabbed in business class-and I think there's Mace-that we can't breathe-I don't know, I think we're getting hijacked." She then told of the stabbings of the two flight attendants.
@@ -106,14 +121,18 @@ grep -i "breathe" ./technical/*/*.txt
 ./technical/biomed/cc1856.txt:          Duluth, CA, USA). Rats breathed room air, spontaneously,
 ./technical/plos/pmed.0020281.txt:        redeemed social condition; to know even one life breathed easier because you have lived;
 ```
+
 * This command line searches for the pattern "breathe" in all `.txt` files in the `./technical` directory and this is useful because it performs a case-insensitive search denoted by the `-i`. Source: https://en.wikibooks.org/wiki/Grep
 
 ## 2. grep -r
+
 ```
 grep -r "scope" ./technical/911report/chapter-13.1.txt
                 the activities of other agencies. Law or executive order must define the scope of
 ```
+
 * This commmand line recursively searches for the pattern "scope" in the `chapter-13.1.txt` file and this is useful because we don't need exact file paths, but in this case, I still only refer to one file. Source: https://en.wikibooks.org/wiki/Grep
+  
 ```
 grep -rn "breathe" ./technical/*/*.txt
 ./technical/911report/chapter-1.txt:76:    At 8:19, Ong reported:"The cockpit is not answering, somebody's stabbed in business class-and I think there's Mace-that we can't breathe-I don't know, I think we're getting hijacked." She then told of the stabbings of the two flight attendants.
@@ -128,9 +147,11 @@ grep -rn "breathe" ./technical/*/*.txt
 ./technical/biomed/cc1856.txt:100:          Duluth, CA, USA). Rats breathed room air, spontaneously,
 ./technical/plos/pmed.0020281.txt:36:        redeemed social condition; to know even one life breathed easier because you have lived;
 ```
+
 * This command line recursively searches for the pattern "breathe" in the `./technical` directory and this is useful because it searches in all files under the directory and also shows the line numbers for matches. Source: https://en.wikibooks.org/wiki/Grep
 
 ## 3. grep -C 
+
 ```
 grep -C 2 "dangers" ./technical/911report/preface.txt
                 between and within agencies. We learned of the pervasive problems of managing and
@@ -139,7 +160,9 @@ grep -C 2 "dangers" ./technical/911report/preface.txt
             At the outset of our work, we said we were looking backward in order to look forward.
                 We hope that the terrible losses chronicled in this report can create something
 ```
+
 * This command line displays the number of lines and its context before and after each match. We are presented the 2 lines before and after the match "dangers". This is helpful because we can find the context around certain words or matches. Source: https://www.ibm.com/docs/sk/aix/7.1?topic=g-grep-command
+  
 ```
 grep -C 1 "moon" ./technical/*/*.txt
 ./technical/911report/chapter-6.txt-                pulled Musharraf aside for a brief, one-on-one meeting, he pleaded with the general
@@ -174,17 +197,22 @@ grep -C 1 "moon" ./technical/*/*.txt
 ./technical/plos/journal.pbio.0020439.txt:        earth ebbed and flowed under the motive power of the moon. Harvey became physician to the
 ./technical/plos/journal.pbio.0020439.txt-        king of England. He used his position of privilege to dissect deer from the king's deer
 ```
+
 * This command line displays the number of lines and its context before and after each match. We are presented the 1 line before and after the match "moon". This is helpful because we can find the context around certain words or matches. Source: https://www.ibm.com/docs/sk/aix/7.1?topic=g-grep-command
 
 ## 4. grep -l
+
 ```
 grep -l "losses" ./technical/911report/preface.txt
 ./technical/911report/preface.txt
 ```
+
 * This command line lists the name of files containing the specified word "losses" and since "losses" is found in the file, only the file is listed. This is useful because we can find which files contain the specific word. Source: https://en.wikibooks.org/wiki/Grep
+  
 ```
 grep -l "preface" ./technical/*/*.txt
 ./technical/911report/chapter-13.3.txt
 ./technical/911report/chapter-3.txt
 ````
+
 * This command line lists the name of the files containing the specified word "preface" and the word was found within those listed files. This is useful because we can find which files contain the specific word. Source: https://en.wikibooks.org/wiki/Grep
