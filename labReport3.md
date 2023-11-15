@@ -92,7 +92,7 @@ To fix this, I switch `arr` for  `newArray` and input this array with the revers
 
 # Part 2 - Researching Commands
 
-## 1. grep -i
+## 1. `grep -i`
 
 ```
 grep -i "activities" ./technical/911report/chapter-13.1.txt
@@ -124,7 +124,7 @@ grep -i "breathe" ./technical/*/*.txt
 
 * This command line searches for the pattern "breathe" in all `.txt` files in the `./technical` directory and this is useful because it performs a case-insensitive search denoted by the `-i`. Source: https://en.wikibooks.org/wiki/Grep
 
-## 2. grep -r
+## 2. `grep -r`
 
 ```
 grep -r "scope" ./technical/911report/chapter-13.1.txt
@@ -150,7 +150,7 @@ grep -rn "breathe" ./technical/*/*.txt
 
 * This command line recursively searches for the pattern "breathe" in the `./technical` directory and this is useful because it searches in all files under the directory and also shows the line numbers for matches. Source: https://en.wikibooks.org/wiki/Grep
 
-## 3. grep -C 
+## 3. `grep -C` 
 
 ```
 grep -C 2 "dangers" ./technical/911report/preface.txt
@@ -200,7 +200,7 @@ grep -C 1 "moon" ./technical/*/*.txt
 
 * This command line displays the number of lines and its context before and after each match. We are presented the 1 line before and after the match "moon". This is helpful because we can find the context around certain words or matches. Source: https://www.ibm.com/docs/sk/aix/7.1?topic=g-grep-command
 
-## 4. grep -l
+## 4. `grep -l`
 
 ```
 grep -l "losses" ./technical/911report/preface.txt
