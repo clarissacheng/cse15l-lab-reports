@@ -3,7 +3,8 @@ I logged into my ieng6 account.
 
 Key Strokes:
 ```
-<s><s><h><space><c><s><1><5><l><f><a><2><3><e><a><@><i><e><n><g><6><.><u><c><s><d><.><e><d><u><enter>
+<s><s><h><space><c><s><1><5><l><f><a><2><3><e><a><@>
+<i><e><n><g><6><.><u><c><s><d><.><e><d><u><enter>
 ```
 ![CS15Lab4pic1](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/29bdaebf-5533-4767-a08a-e7b9d7614426)
 
