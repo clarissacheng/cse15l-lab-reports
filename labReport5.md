@@ -44,11 +44,17 @@ Terminal output:
       <s><s><h><space><c><s><1><5><l><f><a><2><3><e><a><@>
       <i><e><n><g><6><.><u><c><s><d><.><e><d><u><enter>
 
-      
-      <g> <i> <t> <space> <c> <l> <o> <n> <e> <space> <ctrl-v> <enter>
+
+
 
       
-      <c> <d> <space> <l> <a> <b> <3> <enter>
+      	<g> <i> <t> <space> <c> <l> <o> <n> <e> <space> <ctrl-v> <enter>
+
+
+
+
+      
+      	<c> <d> <space> <l> <a> <b> <3> <enter>
       ```
       
    2.The contents of each file before fixing the bug
