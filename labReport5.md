@@ -129,8 +129,8 @@ public class ArrayTests {
       
    3. The full command line (or lines) you ran to trigger the bug
 
-      Commands: I ran the bash script `javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar` command but since I ran it 7 lines before I used short cut arrows which are seen below in the Keys Pressed section.
-                I ran the bash script `java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests` command but since I ran it 7 lines before I used short cut arrows which is seen below in the Keys Pressed section.
+      Commands: I ran the `javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar` command but since I ran it 7 lines before I used short cut arrows which are seen below in the Keys Pressed section.
+                I ran the `java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests` command but since I ran it 7 lines before I used short cut arrows which is seen below in the Keys Pressed section.
                 Both of these commands are required to run the JUnit tests to trigger the bug in the code.
       
         Keys pressed: 
