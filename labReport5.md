@@ -4,32 +4,32 @@
 
 Hi,
 
-I'm currently having issues with running a `reversed` method that is supposed to return an array with all the elements of the input array in reversed order. When running the ArrayExamples.java file with JUnit tests, the expected output was <4> but was actually <0> showing that the method is incorrect. I'm not sure what is incorrect but my guess is that I'm sorting using the current array and therefore reusing values that had already been sorted at a certain index. The images below display the incorrect reversed method and the symptom.
+I'm currently having issues with running a `reversed` method that is supposed to return an array with all the elements of the input array in reversed order. When running the ArrayExamples.java file with JUnit tests, the expected output was a reversed input list of `{1,2,3,4}` which should be `{4,3,2,1}` but was actually throwing an Out of Bounds Exception showing that the method is incorrect. I'm not sure what is incorrect but my guess is that I'm sorting using the current array and therefore reusing values that had already been sorted at a certain index. The images below display the incorrect reversed method and the symptom.
 
 Incorrect `reversed` method:
-![CSE15Lab5pic1](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/3b841a30-4d78-46e4-9de2-2cc13c6e37b2)
+![Screenshot 2023-12-04 193849](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/da998fde-64ed-4942-9c6c-4fcd8b878579)
 
 Symptom for failure-inducing input:
-![Screenshot 2023-12-03 144645](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/7b7a8a54-f3d7-4ba7-8ecd-c83f23ce998f)
+![Screenshot 2023-12-04 200345](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/4c5cc5e4-e1ad-4709-8a30-d887b996d5d9)
 
 2. **TA Response:**
 
 Hello,
 
-In your incorrect method, it seems that the code is incorrectly assigning values from the uninitialized `newArray` to the input array `arr`. Instead of returning the original input array `arr` again, what could you do to return the new array `newArray` instead? I also recommend you print out which numbers you are swapping to observe if the method is correctly reversing them.
+In your incorrect `reversed` method, recheck the loop conditions that don't seem to be correct causing the Out of Bounds Exception. It also seems the code is incorrectly assigning values from the uninitialized `newArray` to the input array `arr`. Instead of returning the original input array `arr` again, what could you do to return the new array `newArray` instead? I also recommend you print out which numbers you are swapping to observe if the method is correctly reversing them.
 
 3. **Student Corrected Output:**
 
 Hi,
 
-Thanks for your help! I realized the bug was that I was essentially copying values from `newArray` to `arr`, but in the wrong order. This overwrites the values of `arr` with uninitialized values from `newArray` and therefore the incorrect, uninitialized values are being returned. I also added code to print what values were being correctly swapped and the right code and output is below.
+Thanks for your help! I realized the bug was that I put an `=` inside the for-loop causing the loop to attempt an out-of-bounds access. I also was essentially copying values from `newArray` to `arr`, but in the wrong order. This overwrites the values of `arr` with uninitialized values from `newArray` and therefore the incorrect, uninitialized values are being returned. I also added code to print what values were being correctly swapped and the right code and output are below.
 
 Corrected `reversed` method:
 ![Screenshot 2023-12-03 153538](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/1ba287c8-3359-413b-af95-e19720fda56b)
 
 Terminal output:
 
-![Screenshot 2023-12-03 153122](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/615130b5-59bf-48f8-b8e9-84fb488ba493)
+![Screenshot 2023-12-04 194343](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/7f61ff0e-4fef-4873-b924-e3c7d1eb2108)
 
 4. **All information needed about the setup**
 
@@ -37,17 +37,9 @@ Terminal output:
   
         Commands: Log into ieng6 account as a CSE15L student with the command `ssh cs15lfa23ea@ieng6.ucsd.edu`.
                   Git clone the `lab3` repository with the command `git clone git@github.com:clarissacheng/lab3.git`.
-                  Access `lab3` directory with `cd lab3`.
-      
-        Keys pressed:
-      ```
-      	<s><s><h><space><c><s><1><5><l><f><a><2><3><e><a><@>
-      	<i><e><n><g><6><.><u><c><s><d><.><e><d><u><enter>
-
-      	<g> <i> <t> <space> <c> <l> <o> <n> <e> <space> <ctrl-v> <enter>
-
-      	<c> <d> <space> <l> <a> <b> <3> <enter>
-      ```
+                  Access `lab3` directory with `cd lab3`. I had my incorrect `reversed` method within the ArrayExamples.java file.
+      		  The ArrayTests.java file tested the `reversed` method. The test.sh file contained the commands to run the JUnit tests that would run the ArrayTests.java file. 
+![Screenshot 2023-12-04 200247](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/679c4fb7-0f20-4421-896f-8ce1e3af1d63)
       
    2.The contents of each file before fixing the bug
 
@@ -67,7 +59,7 @@ public class ArrayExamples {
   // order
   static int[] reversed(int[] arr) {
     int[] newArray = new int[arr.length];
-    for(int i = 0; i < arr.length; i += 1) {
+    for(int i = 0; i <= arr.length; i += 1) {
       arr[i] = newArray[arr.length - i - 1];
     }
     return arr;
@@ -98,50 +90,37 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class ArrayTests {
-	@Test 
-	public void testReverseInPlace() {
+  @Test
+  public void testReverseInPlace() {
     int[] input1 = { 3 };
     ArrayExamples.reverseInPlace(input1);
     assertArrayEquals(new int[]{ 3 }, input1);
-	}
+  }
 
   @Test
   public void testReversed() {
-    int[] input1 = { };
-    assertArrayEquals(new int[]{ }, ArrayExamples.reversed(input1));
-  }
-
-  @Test
-  public void testReverseInPlace2() {
     int[] input1 = {1,2,3,4};
-    ArrayExamples.reverseInPlace(input1);
-    assertArrayEquals(new int[]{4,3,2,1}, input1); //array first differed at element [2]; expected <2> but was <3>
+    assertArrayEquals(new int[]{4,3,2,1}, ArrayExamples.reversed(input1));
   }
+}                                                                      
+```
 
-  @Test
-  public void testReversed2() {
-    int[] input1 = {1,2,3,4};
-    assertArrayEquals(new int[]{4,3,2,1}, ArrayExamples.reversed(input1)); //array first differed at element [0];
-    expected <4> but was <0>
-  }
-}
+`test.sh`
+```
+javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
+java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests
 ```
       
    3. The full command line (or lines) you ran to trigger the bug
 
-      Commands: I ran the `javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar` command but since I ran it 7 lines before I used short cut arrows which are seen below in the Keys Pressed section.
-                I ran the `java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests` command but since I ran it 7 lines before I used short cut arrows which is seen below in the Keys Pressed section.
-                Both of these commands are required to run the JUnit tests to trigger the bug in the code.
-      
-        Keys pressed: 
-      ```
-      <up> <up> <up> <up> <up> <up> <up> <Enter>
-      <up> <up> <up> <up> <up> <up> <up> <Enter>
-      ```
+      Commands: `bash test.sh`
 
-  4. A description of what to edit to fix the bug
+      `test.sh` contains: 
+![Screenshot 2023-12-04 200606](https://github.com/clarissacheng/cse15l-lab-reports/assets/112114163/e9fe9b86-fff3-45da-87b6-a86733216109)
 
-     To fix the bug, we must populate the `newArray` with the reversed values from the input array `arr`. The original reversed method incorrectly reverses the input array because it assigns uninitialized `newArray` to the `arr` array which results in incorrect output. To fix this, I switch `arr` for `newArray` and input this array with the reversed values from input array `arr`. This ensures the `newArray` contains the reversed values and that the reversed array is returned.
+  5. A description of what to edit to fix the bug
+
+     To fix the bug, we must first delete the `=` within the for-loop because this would cause an out-of-bounds exception where we try to access an element using an index that is outside the valid range of indices for that array. We also must populate the `newArray` with the reversed values from the input array `arr`. The original reversed method incorrectly reverses the input array because it assigns uninitialized `newArray` to the `arr` array which results in incorrect output. To fix this, I switch `arr` for `newArray` and input this array with the reversed values from input array `arr`. This ensures the `newArray` contains the reversed values and that the reversed array is returned.
      Within the for loop of the `reversed` method, I also wrote a print statement that will output which values are being reversed between the two arrays just as the TA suggested.
 
 # Part 2 - Reflection
