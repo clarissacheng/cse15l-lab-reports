@@ -108,7 +108,8 @@ public class ArrayTests {
 `test.sh`
 ```
 javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
-java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ArrayTests
+java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore
+ArrayTests
 ```
       
    3. The full command line (or lines) you ran to trigger the bug
